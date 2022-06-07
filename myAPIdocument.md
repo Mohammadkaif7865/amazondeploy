@@ -14,10 +14,17 @@
 //To get orders of the customers
 >>(Get) https://amazoncloneserver.herokuapp.com/orderplaced  (live link)
 >>(Get) localhost:9100/orderplaced  (localhost link)
+
+
+
+
 //page 2 : listing page
 //To get products details
 >>(Get) https://amazoncloneserver.herokuapp.com/details/2 (live link)
 >>(get) localhost:9100/details/2  (localhost link)
+
+
+
 //page 3 : cart page
 //To get products on the cart 
 >>(Get) https://amazoncloneserver.herokuapp.com/cart (live link)
@@ -25,6 +32,9 @@
 //Add to cart link with given cartId / productId / quantity
 >>(Put) https://amazoncloneserver.herokuapp.com/addtocart/5/43/3 (live link)
 >>(Put) localhost:9100/addtocart/5/33/2 (localhost link)
+
+
+
 //page 4 : orderplaced page
 //To get orderplaced data
 >>(Get) https://amazoncloneserver.herokuapp.com/orderplaced  (live link)
