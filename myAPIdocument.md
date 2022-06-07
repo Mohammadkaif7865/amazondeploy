@@ -23,10 +23,15 @@
 >>(Get) https://amazoncloneserver.herokuapp.com/cart (live link)
 >>(Get) localhost:9100/cart  (localhost link) 
 //Add to cart link with given cartId / productId / quantity
->>(Post) https://amazoncloneserver.herokuapp.com/addtocart/5/43/3 (live link)
->>(Post) localhost:9100/addtocart/5/33/2 (localhost link)
+>>(Put) https://amazoncloneserver.herokuapp.com/addtocart/5/43/3 (live link)
+>>(Put) localhost:9100/addtocart/5/33/2 (localhost link)
 //page 4 : orderplaced page
 //To get orderplaced data
 >>(Get) https://amazoncloneserver.herokuapp.com/orderplaced  (live link)
 >>(Get) localhost:9100/orderplaced  (localhost link)
+//To place order
+>>(Post) https://amazoncloneserver.herokuapp.com/placeorder (live link)
+>>(Post) localhost:9100/placeorder (localhost link)
 //to cancel orders
+>>(Delete) https://amazoncloneserver.herokuapp.com/deleteOrder/629ee20225564384bd5bb6f8 (live link)
+>>(Delete) localhost:9100/deleteOrder/629b5db153fbbdbcc3d7117c   (localhost link)
