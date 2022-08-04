@@ -75,7 +75,7 @@ app.get('/products_on_category_basis', (req, res) => {
 //8 to filter products on the basis of cost or category
 app.get('/category_and_filter', (req, res) => {
     let query = {};
-    let sort = { cost: 1 }; //-1 for decent cost and 1 for ascending cost
+    let sort = { cost: 1 }; // # -1 for decent cost and 1 for ascending cost
     let lcost = Number(req.query.lcost);
     let hcost = Number(req.query.hcost);
     if (req.query.category && req.query.sub_category) {
