@@ -147,6 +147,6 @@ MongoClient.connect(mongoUrl, (err, client) => {
     db = client.db('Amazon');
     app.listen(port, (err) => {
         if (err) throw err;
-        console.log(`Express Server listening on port ${port}`)
+        console.log(`Express Server listening on port ${port}`);
     });
 });
