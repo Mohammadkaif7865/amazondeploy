@@ -20,6 +20,13 @@ app.use(cors());
 app.get('/', (req, res) => {
     res.send("Express server is running");
 });
+// ! category for home page
+app.get('/category', (req, res) => {
+    db.collection("categories").find().toArray((err, result) => {
+        if (err) throw err;
+        res.send(result);
+    })
+})
 
 //2 to check each collection
 app.get('/items/:collections', (req, res) => {
