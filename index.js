@@ -33,7 +33,7 @@ app.get('/products_match/:word', (req, res) => {
     let output = db.collection('products').find().toArray((err, result)=>{
         if (err) throw err;
         res.send(result.filter((item) => {
-            return item.name.toLowerCase().indexOf(data.toLowerCase()) > -1 || item.category.toLowerCase().indexOf(data.toLowerCase()) > -1 || item.sub_category.toLowerCase().indexOf(data.toLowerCase()) > -1;
+            return item.brand.toLowerCase().indexOf(data.toLowerCase()) > -1 || item.name.toLowerCase().indexOf(data.toLowerCase()) > -1 || item.category.toLowerCase().indexOf(data.toLowerCase()) > -1 || item.sub_category.toLowerCase().indexOf(data.toLowerCase()) > -1;
         }));
     })
 })
