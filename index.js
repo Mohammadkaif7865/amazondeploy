@@ -22,12 +22,21 @@ app.get('/', (req, res) => {
 });
 // ! category for home page
 app.get('/category', (req, res) => {
-db.collection("categories").find().toArray((err, result) => {
+    db.collection("categories").find().toArray((err, result) => {
         if (err) throw err;
         res.send(result);
     })
 })
-
+// ! word filter 
+app.get('/products_match/:word', (req, res) => {
+    let data = req.params.word;
+    let output = db.collection('products').find().toArray((err, result)=>{
+        if (err) throw err;
+        res.send(result.filter((item) => {
+            return item.name.toLowerCase().indexOf(data.toLowerCase()) > -1 || item.category.toLowerCase().indexOf(data.toLowerCase()) > -1 || item.sub_category.toLowerCase().indexOf(data.toLowerCase()) > -1;
+        }));
+    })
+})
 //2 to check each collection
 app.get('/items/:collections', (req, res) => {
     db.collection(req.params.collections).find().toArray((err, result) => {
@@ -112,6 +121,7 @@ app.delete('/deleteOrder/:id', (req, res) => {
         res.send(result);
     });
 });
+
 //11 to addcart of a user
 app.post('/addcart', (req, res) => {
     db.collection('cart').insertMany(req.body, (err, result) => {
