@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 });
 // ! category for home page
 app.get('/category', (req, res) => {
-    db.collection("categories").find().toArray((err, result) => {
+db.collection("categories").find().toArray((err, result) => {
         if (err) throw err;
         res.send(result);
     })
