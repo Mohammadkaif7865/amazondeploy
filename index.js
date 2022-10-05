@@ -37,6 +37,16 @@ app.get('/products_match/:word', (req, res) => {
         }));
     })
 })
+app.get('/products_match_with_sort/:word/:bit', (req, res) => {
+    let data = req.params.word;
+    let bit = Number(req.params.bit);
+    let output = db.collection('products').find().sort({cost : bit}).toArray((err, result)=>{
+        if (err) throw err;
+        res.send(result.filter((item) => {
+            return item.brand.toLowerCase().indexOf(data.toLowerCase()) > -1 || item.name.toLowerCase().indexOf(data.toLowerCase()) > -1 || item.category.toLowerCase().indexOf(data.toLowerCase()) > -1 || item.sub_category.toLowerCase().indexOf(data.toLowerCase()) > -1;
+        }));
+    })
+})
 //2 to check each collection
 app.get('/items/:collections', (req, res) => {
     db.collection(req.params.collections).find().toArray((err, result) => {
