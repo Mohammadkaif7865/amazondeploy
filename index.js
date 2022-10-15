@@ -132,21 +132,22 @@ app.delete('/deleteOrder/:id', (req, res) => {
         res.send(result);
     });
 });
-// ! add to fav
+// # favourities add ,remove and get
+// * add to fav
 app.post('/favourities', (req, res) => {
     db.collection('amazonfav').insertMany(req.body, (err, result) => {
         if (err) throw err;
         res.send(result);
     });
 })
-// # all the favourities of a email address
+// * all the favourities of a email address
 app.get('/userfav/:email', (req, res) => {
     db.collection('amazonfav').find({ email: req.params.email }).toArray((err, result) => {
         if (err) throw err;
         res.send(result);
     })
 })
-// # delete a favourities of a email address
+// * delete a favourities of a email address
 app.delete('/deletefav/:email/:id', (req, res) => {
     db.collection('amazonfav').deleteOne({ email: req.params.email, itemId: Number(req.params.id) }, (err, result) => {
         if (err) throw err;
