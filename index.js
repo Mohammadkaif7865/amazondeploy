@@ -143,7 +143,21 @@ app.post('/favourities', (req, res) => {
 app.get('/userfav/:email', (req, res) => {
     db.collection('amazonfav').find({ email: req.params.email }).toArray((err, result) => {
         if (err) throw err;
-        res.send(result); 
+        res.send(result);
+    })
+})
+// # delete a favourities of a email address
+app.delete('/deletefav/:email/:id', (req, res) => {
+    db.collection('amazonfav').deleteOne({ email: req.params.email, itemId: Number(req.params.id) }, (err, result) => {
+        if (err) throw err;
+        res.send(result);
+        console.log(req.params.email, req.params.id);
+    });
+})
+app.get('/userfav/:email', (req, res) => {
+    db.collection('amazonfav').find({ email: req.params.email }).toArray((err, result) => {
+        if (err) throw err;
+        res.send(result);
     })
 })
 //11 to addcart of a user
