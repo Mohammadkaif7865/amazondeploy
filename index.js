@@ -38,6 +38,7 @@ app.get('/products_match/:word', (req, res) => {
         }));
     })
 })
+// * main search for all categories , name ,sub_category and description 
 app.get('/products_match_with_sort/:word/:bit', (req, res) => {
     let data = req.params.word;
     let bit = Number(req.params.bit);
