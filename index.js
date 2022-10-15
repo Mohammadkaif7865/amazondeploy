@@ -152,7 +152,6 @@ app.delete('/deletefav/:email/:id', (req, res) => {
     db.collection('amazonfav').deleteOne({ email: req.params.email, itemId: Number(req.params.id) }, (err, result) => {
         if (err) throw err;
         res.send(result);
-        console.log(req.params.email, req.params.id);
     });
 })
 // # addto cart , remove from cart 
@@ -164,11 +163,10 @@ app.post('/addcart', (req, res) => {
     });
 });
 // * delete form cart
-app.delete('/deletefav/:email/:id', (req, res) => {
-    db.collection('amazonfav').deleteOne({ email: req.params.email, itemId: Number(req.params.id) }, (err, result) => {
+app.delete('/deleteFromCart/:email/:id', (req, res) => {
+    db.collection('cart').deleteOne({ email: req.params.email, itemId: Number(req.params.id) }, (err, result) => {
         if (err) throw err;
         res.send(result);
-        console.log(req.params.email, req.params.id);
     });
 })
 // * Connection with db
