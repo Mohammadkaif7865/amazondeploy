@@ -161,27 +161,15 @@ app.get('/userfav/:email', (req, res) => {
         res.send(result);
     })
 })
-//11 to addcart of a user
+// # addto cart , remove from cart 
+// * add to cart
 app.post('/addcart', (req, res) => {
     db.collection('cart').insertMany(req.body, (err, result) => {
         if (err) throw err;
         res.send(result);
     });
 });
-// db.coll.update({"_id": 1}, {$push :{"array": 1}})
-// db.coll.update({"_id": 1}, {$push: {scores: {$each: [90, 92, 85]}}})
-//12 to add products to cart of user
-app.put('/addtocart/:cartId/:productId/:quantity', (req, res) => {
-    let oid = Number(req.params.cartId);
-    db.collection('cart').updateOne({ cartId: oid }, {
-        $push: {
-            "productIds": [Number(req.params.productId), Number(req.params.quantity)]
-        }
-    }, (err, result) => {
-        if (err) throw err;
-        res.send(result);
-    });
-});
+
 // db.people.update({"name":"dannie"}, {'$pull': {"interests": "guitar"}})
 // db.coll.update({"_id": 1}, {$pullAll: {"array" :[3, 4, 5]}})
 // db.lists.update({}, {$unset : {"interests.3" : 1 }}) 
