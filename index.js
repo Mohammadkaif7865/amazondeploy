@@ -170,21 +170,6 @@ app.post('/addcart', (req, res) => {
     });
 });
 
-// db.people.update({"name":"dannie"}, {'$pull': {"interests": "guitar"}})
-// db.coll.update({"_id": 1}, {$pullAll: {"array" :[3, 4, 5]}})
-// db.lists.update({}, {$unset : {"interests.3" : 1 }}) 
-// db.lists.update({}, {$pull : {"interests" : null}})
-app.put('/removeFromCart/:cartId/:itemIndex', (req, res) => {
-    let oid = Number(req.params.cartId);
-    db.collection('cart').updateOne({ cartId: oid }, {
-        $pull: {
-            "productIds": req.params.itemIndex
-        }
-    }, (err, result) => {
-        if (err) throw err;
-        res.send(result);
-    });
-});
 //Connection with db
 MongoClient.connect(mongoUrl, (err, client) => {
     if (err) console.log(`Error While Connecting`);
