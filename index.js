@@ -155,12 +155,6 @@ app.delete('/deletefav/:email/:id', (req, res) => {
         console.log(req.params.email, req.params.id);
     });
 })
-app.get('/userfav/:email', (req, res) => {
-    db.collection('amazonfav').find({ email: req.params.email }).toArray((err, result) => {
-        if (err) throw err;
-        res.send(result);
-    })
-})
 // # addto cart , remove from cart 
 // * add to cart
 app.post('/addcart', (req, res) => {
@@ -169,8 +163,15 @@ app.post('/addcart', (req, res) => {
         res.send(result);
     });
 });
-
-//Connection with db
+// * delete form cart
+app.delete('/deletefav/:email/:id', (req, res) => {
+    db.collection('amazonfav').deleteOne({ email: req.params.email, itemId: Number(req.params.id) }, (err, result) => {
+        if (err) throw err;
+        res.send(result);
+        console.log(req.params.email, req.params.id);
+    });
+})
+// * Connection with db
 MongoClient.connect(mongoUrl, (err, client) => {
     if (err) console.log(`Error While Connecting`);
     db = client.db('Amazon');
