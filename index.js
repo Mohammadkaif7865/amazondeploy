@@ -134,7 +134,7 @@ app.delete('/deleteOrder/:id', (req, res) => {
 });
 // ! add to fav
 app.post('/favourities', (req, res) => {
-    db.collection('amazonfav').insertOne(req.body, (err, result) => {
+    db.collection('amazonfav').insertMany(req.body, (err, result) => {
         if (err) throw err;
         res.send(result);
     });
