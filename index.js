@@ -20,7 +20,7 @@ app.use(cors());
 app.get('/', (req, res) => {
     res.send("Express server is running");
 });
-// ! category for home page
+// * category for home page
 app.get('/category', (req, res) => {
     db.collection("categories").find().toArray((err, result) => {
         if (err) throw err;
@@ -28,7 +28,7 @@ app.get('/category', (req, res) => {
     })
 })
 
-// ! word filter 
+// * word filter 
 app.get('/products_match/:word', (req, res) => {
     let data = req.params.word;
     let output = db.collection('products').find().toArray((err, result) => {
