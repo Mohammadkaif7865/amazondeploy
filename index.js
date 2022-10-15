@@ -27,10 +27,11 @@ app.get('/category', (req, res) => {
         res.send(result);
     })
 })
+
 // ! word filter 
 app.get('/products_match/:word', (req, res) => {
     let data = req.params.word;
-    let output = db.collection('products').find().toArray((err, result)=>{
+    let output = db.collection('products').find().toArray((err, result) => {
         if (err) throw err;
         res.send(result.filter((item) => {
             return item.brand.toLowerCase().indexOf(data.toLowerCase()) > -1 || item.name.toLowerCase().indexOf(data.toLowerCase()) > -1 || item.category.toLowerCase().indexOf(data.toLowerCase()) > -1 || item.sub_category.toLowerCase().indexOf(data.toLowerCase()) > -1;
@@ -40,7 +41,7 @@ app.get('/products_match/:word', (req, res) => {
 app.get('/products_match_with_sort/:word/:bit', (req, res) => {
     let data = req.params.word;
     let bit = Number(req.params.bit);
-    let output = db.collection('products').find().sort({cost : bit}).toArray((err, result)=>{
+    let output = db.collection('products').find().sort({ cost: bit }).toArray((err, result) => {
         if (err) throw err;
         res.send(result.filter((item) => {
             return item.brand.toLowerCase().indexOf(data.toLowerCase()) > -1 || item.name.toLowerCase().indexOf(data.toLowerCase()) > -1 || item.category.toLowerCase().indexOf(data.toLowerCase()) > -1 || item.sub_category.toLowerCase().indexOf(data.toLowerCase()) > -1;
@@ -131,6 +132,13 @@ app.delete('/deleteOrder/:id', (req, res) => {
         res.send(result);
     });
 });
+// ! add to fav
+app.post('/favourities', (req, res) => {
+    db.collection('amazonfav').insertOne(req.body, (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+})
 
 //11 to addcart of a user
 app.post('/addcart', (req, res) => {
