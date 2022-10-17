@@ -79,7 +79,7 @@ app.get('/orderplaced', (req, res) => {
     });
 });
 //6 to check products on cart
-app.get('/cart', (req, res) => {
+app.get('/cartall', (req, res) => {
     db.collection('cart').find().toArray((err, result) => {
         if (err) throw err;
         res.send(result)
@@ -157,6 +157,12 @@ app.delete('/deletefav/:email/:id', (req, res) => {
 })
 // # addto cart , remove from cart 
 // * add to cart
+app.get('/cart/:email', (req, res) => {
+    db.collection('cart').find({ email: req.params.email }).toArray((err, result) => {
+        if (err) throw err;
+        res.send(result);
+    })
+});
 app.post('/addcart', (req, res) => {
     db.collection('cart').insertMany(req.body, (err, result) => {
         if (err) throw err;
