@@ -149,7 +149,7 @@ app.get('/userfav/:email', (req, res) => {
     })
 })
 // * spacific in the favourities
-app.get('/spacificcartItem', (req, res) => {
+app.get('/spacific', (req, res) => {
     db.collection('products').find({ id: { $in: req.body.items } }).toArray((err, result) => {
         if (err) throw err;
         res.send(result);
