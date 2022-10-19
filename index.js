@@ -149,12 +149,11 @@ app.get('/userfav/:email', (req, res) => {
     })
 })
 // * spacific in the favourities
-app.get('/spacific', (req, res) => {
-    db.collection('products').find({ id: { $in: req.body.items } }).toArray((err, result) => {
+app.get('/spacific/:items', (req, res) => {
+    db.collection('products').find({ id: { $in: JSON.parse(req.params.items) } }).toArray((err, result) => {
         if (err) throw err;
         res.send(result);
     })
-    // res.send(req.body);
 })
 // * delete a favourities of a email address
 app.delete('/deletefav/:email/:id', (req, res) => {
