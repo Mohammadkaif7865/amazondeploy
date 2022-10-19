@@ -148,6 +148,13 @@ app.get('/userfav/:email', (req, res) => {
         res.send(result);
     })
 })
+// * spacific in the favourities
+app.get('/spacific', (req, res) => {
+    db.collection('products').find({ itemId: { $in: req.body.items } }).toArray((err, result) => {
+        if (err) throw err;
+        res.send(result);
+    })
+})
 // * delete a favourities of a email address
 app.delete('/deletefav/:email/:id', (req, res) => {
     db.collection('amazonfav').deleteOne({ email: req.params.email, itemId: Number(req.params.id) }, (err, result) => {
