@@ -133,6 +133,19 @@ app.delete('/deleteOrder/:id', (req, res) => {
         res.send(result);
     });
 });
+app.put('/updateOrder/:id', (req, res) => {
+    let oid = Number(req.params.id);
+    db.collection('orders').updateOne({ orderId: oid }, {
+        $set: {
+            "status": req.body.status,
+            "bank_name": req.body.bank_name,
+            "date": req.body.date
+        }
+    }, (err, result) => {
+        if (err) throw err;
+        res.send('Order Updated');
+    });
+});
 // # favourities add ,remove and get
 // * add to fav
 app.post('/favourities', (req, res) => {
