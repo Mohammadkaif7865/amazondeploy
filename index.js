@@ -127,7 +127,7 @@ app.post('/placeOrder', (req, res) => {
 });
 //10 to delete order
 app.delete('/deleteOrder/:id', (req, res) => {
-    let oid = mongo.ObjectId(req.params.id)
+    let id = Number(req.params.id)
     db.collection('orderplaced').remove({ id: id }, (err, result) => {
         if (err) throw err;
         res.send(result);
