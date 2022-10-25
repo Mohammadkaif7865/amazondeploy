@@ -135,7 +135,7 @@ app.delete('/deleteOrder/:id', (req, res) => {
 });
 app.put('/updateOrder/:id', (req, res) => {
     let id = Number(req.params.id);
-    db.collection('orderplaced').updateOne({ orderId: oid }, {
+    db.collection('orderplaced').updateOne({ id: id }, {
         $set: {
             "status": req.body.status,
             "bank_name": req.body.bank_name,
