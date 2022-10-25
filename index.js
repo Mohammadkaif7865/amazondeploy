@@ -143,7 +143,7 @@ app.put('/updateOrder/:id', (req, res) => {
         }
     }, (err, result) => {
         if (err) throw err;
-        res.send('Order Updated');
+        res.send(result);
     });
 });
 // # favourities add ,remove and get
